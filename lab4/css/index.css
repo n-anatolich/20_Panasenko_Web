@@ -1,0 +1,137 @@
+/* базовые настройки */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* светлая тема по умолчанию */
+body { 
+    font-family: Verdana, Arial, sans-serif; 
+    background: #e0e0e0; 
+    color: #111; 
+    overflow-x: hidden; 
+    transition: background 0.3s, color 0.3s;
+}
+
+/* структура */
+.container { 
+    display: grid; 
+    grid-template-columns: 220px 1fr 220px; 
+    gap: 15px; 
+    padding: 15px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+.sidebar { display: flex; flex-direction: column; gap: 20px; }
+.main-content { 
+    background: #ffffff; 
+    color: #000; 
+    padding: 20px; 
+    border: 10px ridge #F60; 
+    transition: background 0.3s, color 0.3s;
+}
+
+/* темная тема */
+body.dark-theme {
+    background: #000000;
+    color: #fff;
+}
+body.dark-theme .main-content {
+    background: #222222;
+    color: #fff;
+}
+body.dark-theme .reasons {
+    background: #b8b800;
+}
+body.dark-theme .review-card {
+    background: #222222;
+    color: #fff;
+}
+
+/* кнопка смены темы */
+.theme-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background: #000;
+    color: #FFF;
+    border: 2px solid #FFF;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 1000;
+}
+body.dark-theme .theme-btn {
+    background: #FFF;
+    color: #000;
+    border-color: #000;
+}
+
+.hero { text-align: center; margin-bottom: 30px; }
+.product-img { max-width: 100%; border: 10px solid #FF0; margin-bottom: 15px; }
+
+/* заголовки и фоны */
+.header, footer { text-align: center; padding: 15px; color: #FFF; position: relative; }
+.header { border-bottom: 8px solid #F00; background: repeating-linear-gradient(45deg, #FF0 0 20px, #000 20px 40px); overflow: hidden; }
+footer { border-top: 10px solid #FF0; background: repeating-linear-gradient(-45deg, #000 0 20px, #F60 20px 40px); }
+
+/* черный фон заголовков */
+.header h1, .slogan, .ad-item h2, .reasons h2, .review-card h3, footer p { background: #000; padding: 5px; color: #fff;}
+
+.header h1 { font-size: 28px; background: #F00; display: inline-block; border: 3px solid #FFF; margin-top: 40px;}
+.slogan { font-size: 28px; color: #F60; text-transform: uppercase; border: 2px dashed #FF0; margin-bottom: 20px; }
+
+/* реклама причины отзывы */
+.ad-item { background: #F60; border: 6px dashed #000; padding: 15px; text-align: center; color: #FFF; }
+.ad-item h2 { color: #FF0; margin-bottom: 10px; font-size: 18px; }
+
+.reasons { background: #FF0; padding: 20px; margin-bottom: 25px; border: 6px double #000; color: #000; transition: background 0.3s; }
+.reasons h2 { color: #F60; margin-bottom: 15px; }
+.reasons ol { padding-left: 30px; font-size: 18px; line-height: 1.5; }
+
+.reviews h2 { color: #FF0; background: #F60; text-align: center; padding: 10px; border: 4px solid #000; margin-bottom: 15px;}
+
+/* Форма отзывов */
+.review-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; background: #eee; padding: 15px; border: 3px solid #000; }
+body.dark-theme .review-form { background: #555; }
+.review-form input, .review-form textarea { padding: 10px; font-size: 16px; border: 2px solid #333; width: 100%; font-family: inherit; }
+.review-form textarea { resize: vertical; min-height: 80px; }
+.submit-btn { padding: 10px; background: #F60; color: #fff; font-weight: bold; border: 3px solid #000; cursor: pointer; text-transform: uppercase; font-size: 16px; }
+.submit-btn:hover { background: #F00; }
+
+/* Карточки отзывов */
+.review-list { display: flex; flex-wrap: wrap; gap: 15px; }
+.review-card { flex: 1 1 calc(50% - 15px); background: #f9f9f9; padding: 15px; border: 4px solid #F60; color: #000; transition: background 0.3s; }
+.review-card h3 { color: #FF0; margin-bottom: 10px; font-size: 16px; }
+.review-img { max-width: 100%; height: auto; border: 2px solid #000; margin-bottom: 10px; max-height: 150px; object-fit: cover; }
+
+/* кнопки */
+.blink-btn, .buy-btn {
+    cursor: pointer; width: 100%; border: 4px solid #000; padding: 10px; margin-top: 10px;
+    animation: blink 0.2s infinite; font-size: 16px; font-weight: bold;
+}
+.buy-btn { font-size: 22px; padding: 20px; border: 6px solid #FFF; animation-duration: 0.4s; }
+
+/* анимации */
+@keyframes blink {
+    0%, 100% { background: #F00; color: #FF0; }
+    50% { background: #FF0; color: #F00; border-color: #F00; }
+}
+
+/* бегущая строка */
+.marquee-container { background: #F60; border: 3px dashed #000; margin-top: 10px; padding: 5px; white-space: nowrap; position: relative; }
+.marquee-text { display: inline-block; font-size: 24px; padding-left: 100%; animation: scroll 15s linear infinite; }
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* медиа-запросы */
+@media (max-width: 900px) {
+    .container { grid-template-columns: 1fr 220px; }
+    .ad-left { grid-area: 2 / 1 / 3 / 3; flex-direction: row; }
+}
+@media (max-width: 600px) {
+    .container { display: flex; flex-direction: column; padding: 5px; gap: 10px; }
+    .sidebar { flex-direction: column; }
+    .review-card { flex: 1 1 100%; }
+    .header h1, .slogan { font-size: 20px; margin-top: 50px;}
+    .buy-btn { font-size: 16px; }
+}

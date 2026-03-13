@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЗАПАСНЫЕ ПУЗЫРЬКИ - СТРОЙ-РАСПРОДАЖА!</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/cookie.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>⚠️ ВНИМАНИЕ! ЗАПАСНЫЕ ПУЗЫРЬКИ ДЛЯ УРОВНЯ! ⚠️</h1>
+        <div class="marquee-container">
+            <div class="marquee-text">ЛИКВИДАЦИЯ СКЛАДА! УСПЕЙ КУПИТЬ ДО ПОВЫШЕНИЯ ЦЕН! СКИДКА ДЕЙСТВУЕТ ПОКА НЕ ЗАКОНЧИТСЯ ТОВАР!</div>
+        </div>
+        <button id="theme-toggle" class="theme-btn">🌙 Тёмная тема</button>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar ad-left">
+            <div class="ad-item">
+                <h2>РУЛЕТКА НА 100 МЕТРОВ БЕСПЛАТНО?</h2>
+                <button class="blink-btn">ЗАБРАТЬ СРОЧНО</button>
+            </div>
+            <div class="ad-item">
+                <h2>БЕТОНОМЕШАЛКА ЗА ПОЛЦЕНЫ!</h2>
+                <p>Конфискат со стройки!</p>
+                <button class="blink-btn">ЖМИ СЮДА</button>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <section class="hero">
+                <img src="img/bubbles_can.png" alt="Банка с запасными пузырьками" class="product-img" width="200">
+                <h2 class="slogan">ТВОЙ УРОВЕНЬ ВРЕТ? ЗАМЕНИ ПУЗЫРЕК И СДАЙ ОБЪЕКТ В СРОК!</h2>
+                <button class="buy-btn">КУПИТЬ В 1 КЛИК (БЕЗ РЕГИСТРАЦИИ)</button>
+            </section>
+
+            <section class="reasons">
+                <h2>ТОП-5 ПРИЧИН ПОЧЕМУ ТЕБЕ ЭТО НУЖНО СЕГОДНЯ:</h2>
+                <ol>
+                    <li>По СНИПу старые пузырьки усыхают на 2мм в год!</li>
+                    <li>Свежий флуоресцентный раствор видно даже в темноте подвала!</li>
+                    <li>Подходит для любых уровней: от китайских до профессиональных!</li>
+                    <li>Выдерживает падение с 9 этажа (банка, не уровень)!</li>
+                    <li>Прораб больше не будет ругаться за кривые стены!</li>
+                </ol>
+            </section>
+
+            <section class="reviews">
+                <h2>ОТЗЫВЫ СО СТРОЙПЛОЩАДКИ:</h2>
+                
+                <form id="review-form" class="review-form">
+                    <input type="text" id="review-name" placeholder="Ваше имя (прораб/мастер)" required>
+                    <input type="url" id="review-image" placeholder="Ссылка на фото со стройки (необязательно)">
+                    <textarea id="review-text" placeholder="Текст отзыва..." required></textarea>
+                    <button type="submit" class="submit-btn">ОТПРАВИТЬ ОТЗЫВ</button>
+                </form>
+
+                <div class="review-list" id="review-list">
+                    <!-- отзывы  генерируются через JS -->
+                </div>
+            </section>
+        </div>
+
+        <aside class="sidebar ad-right">
+            <div class="ad-item">
+                <h2>КАК КЛАСТЬ КИРПИЧ С ЗАКРЫТЫМИ ГЛАЗАМИ?</h2>
+                <button class="blink-btn">СМОТРЕТЬ</button>
+            </div>
+            <div class="ad-item">
+                <h2>СЕКРЕТ ИДЕАЛЬНОЙ СТЯЖКИ!</h2>
+                <p>Добавь в раствор всего одну каплю...</p>
+                <button class="blink-btn">УЗНАТЬ</button>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <p>ООО "ТМЫВ" © 2003-2026. ОСТЕРЕГАЙТЕСЬ КИТАЙСКИХ ПОДДЕЛОК!</p>
+    </footer>
+
+</body>
+</html>
