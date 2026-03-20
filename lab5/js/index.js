@@ -46,7 +46,7 @@ class AlienPlant extends Card {
     }
     // Переопределение методов для отображения уникальных свойств типа
     getSpecificHTML() {
-        return `<p><strong>Восстановление:</strong> +${this.healingPower} HP</p>`;
+        return `<p><strong>Восстановление:</strong> ${this.healingPower} HP</p>`;
     }
     getSpecificEditFields() {
         return `<input type="number" class="edit-heal" value="${this.healingPower}" placeholder="HP">`;
@@ -87,7 +87,7 @@ let isEditMode = false; // Флаг режима интерфейса
 
 // Набор данных для первичной инициализации
 const defaultCards = [
-    new AlienPlant(1, 'Замиокулькас с Нибиру', 2, 'Адаптируется к любой среде.', 5),
+    new AlienPlant(1, 'Бамбук с Нибиру', 2, 'Адаптируется к любой среде.', 5),
     new PyramidArtifact(2, 'Медная Пирамида', 4, 'Гармонизирует энергию и лечит раны.', 30),
     new CosmicSpell(3, 'Сигнал пришельцев', 3, 'Открывает карту противника.', 2)
 ];
@@ -113,7 +113,7 @@ function initApp() {
     buildDOM(); // Отрисовка страницы
 }
 
-// Функция полной пересборки DOM - формирование <body> на основе данных
+// Функция полной пересборки DOM (формирование <body> на основе данных)
 function buildDOM() {
     document.body.innerHTML = ''; // Очистка текущего содержимого
 
@@ -121,17 +121,20 @@ function buildDOM() {
     header.innerHTML = `
         <h1>Колода карт</h1>
         <div>
-            <button onclick="toggleEditMode()">${isEditMode ? 'Выйти из редактирования' : 'Режим редактирования'}</button>
-            <button onclick="addRandomCard()">Добавить карту</button>
+            <select id="cardTypeSelect">
+                <option value="AlienPlant">Растение</option>
+                <option value="PyramidArtifact">Артефакт</option>
+                <option value="CosmicSpell">Заклинание</option>
+            </select>
+            <button onclick="addSelectedCard()">Добавить карту</button>
+            <button onclick="toggleEditMode()">${isEditMode ? 'Выйти из правки' : 'Режим правки'}</button>
         </div>
     `;
 
     const main = document.createElement('main');
     main.className = 'deck';
-    // Генерация HTML-строки из массива объектов
-    main.innerHTML = deck.map(card => card.getHTML(isEditMode)).join('');
+    main.innerHTML = deck.map(card => card.getHTML(isEditMode)).join(''); // Генерация HTML
 
-    // Добавление элементов в дерево
     document.body.appendChild(header);
     document.body.appendChild(main);
 }
@@ -149,13 +152,30 @@ function deleteCard(id) {
     buildDOM(); // Обновление страницы
 }
 
-// Добавление новой карты
-function addRandomCard() {
+// Добавление новой карты выбранного типа
+function addSelectedCard() {
+    const type = document.getElementById('cardTypeSelect').value; // Получение типа из селектора
     const newId = Date.now(); // Генерация ID через timestamp
-    const newCard = new AlienPlant(newId, 'Новый росток', 1, 'Неизвестное растение', 1);
-    deck.push(newCard); // Добавление в массив
-    saveCardsToStorage(deck); // Синхронизация с localStorage
-    buildDOM(); // Обновление страницы
+    let newCard;
+
+    // Логика создания объекта в зависимости от выбора
+    switch (type) {
+        case 'AlienPlant':
+            newCard = new AlienPlant(newId, 'Новое растение', 1, 'Описание растения', 1);
+            break;
+        case 'PyramidArtifact':
+            newCard = new PyramidArtifact(newId, 'Новый артефакт', 1, 'Описание артефакта', 10);
+            break;
+        case 'CosmicSpell':
+            newCard = new CosmicSpell(newId, 'Новое заклинание', 1, 'Описание заклинания', 1);
+            break;
+    }
+
+    if (newCard) {
+        deck.push(newCard); // Добавление в массив
+        saveCardsToStorage(deck); // Синхронизация с localStorage
+        buildDOM(); // Перерисовка страницы
+    }
 }
 
 // Сохранение отредактированных данных
