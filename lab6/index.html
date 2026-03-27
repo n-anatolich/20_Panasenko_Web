@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Explorer</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <h1>API Explorer</h1>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><button class="nav-btn active" data-target="users-section">Пользователи</button></li>
+                    <li><button class="nav-btn" data-target="posts-section">Посты (CRUD)</button></li>
+                    <li><button class="nav-btn" data-target="facts-section">Кошачьи факты</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="users-section" class="content-section active">
+            <h2>Список пользователей</h2>
+            <div id="users-loader" class="loader hidden">Загрузка данных...</div>
+            <div id="users-error" class="error-msg hidden"></div>
+            <div id="users-container" class="cards-grid"></div>
+        </section>
+
+        <section id="posts-section" class="content-section">
+            <h2>Управление постами</h2>
+            <div class="controls">
+                <button id="btn-create-post" class="action-btn success">Создать новый пост (POST)</button>
+            </div>
+            <div id="posts-loader" class="loader hidden">Загрузка данных...</div>
+            <div id="posts-error" class="error-msg hidden"></div>
+            <div id="posts-container" class="cards-grid"></div>
+        </section>
+
+        <section id="facts-section" class="content-section">
+            <h2>Случайный факт о котах</h2>
+            <div class="controls">
+                <button id="btn-get-fact" class="action-btn">Получить новый факт (GET)</button>
+            </div>
+            <div id="facts-loader" class="loader hidden">Загрузка данных...</div>
+            <div id="facts-error" class="error-msg hidden"></div>
+            <article id="fact-container" class="fact-card">
+                <p id="fact-text">Нажмите кнопку, чтобы узнать интересный факт!</p>
+            </article>
+        </section>
+    </main>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
